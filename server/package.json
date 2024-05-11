@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "dev": "tsx watch src/index.ts"
+    "deploy": "vercel",
+    "dev": "tsx watch src/index.ts",
+    "generate": "prisma generate"
   },
   "dependencies": {
     "@hono/node-server": "^1.11.1",

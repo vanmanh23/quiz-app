@@ -18,9 +18,9 @@ app.use(
   }),
 );
 app.route("/categories", categories);
-// app.get('/', (c) => {
-//   return c.text('Hello Hono!')
-// })
+app.get('/', (c) => {
+  return c.text('Hello Hono!')
+})
 
 // const port = 3000
 // console.log(`Server is running on port ${port}`)
