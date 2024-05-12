@@ -4,5 +4,5 @@
       "runtime": "@vercel/node@3.0.11"
     }
   },
-  "rewrites": [{ "source": "/(.*)", "destination": "/server/src/index.ts" }]
+  "rewrites": [{ "source": "/api", "destination": "/server/src/index.ts" }]
 }
