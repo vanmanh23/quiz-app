@@ -19,7 +19,12 @@ app.use(
 );
 app.route("/categories", categories);
 app.get('/', (c) => {
-  return c.text('Hello Hono!')
+  try{
+    return c.text('Hello Hono!')
+  }catch(err){
+    console.log(err);
+  } 
+  return c.text('Hello Hono2!')
 })
 
 // const port = 3000
