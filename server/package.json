@@ -2,6 +2,7 @@
   "scripts": {
     "deploy": "vercel",
     "dev": "tsx watch src/index.ts",
+    "build": "tsc && tsc-alias",
     "generate": "prisma generate"
   },
   "dependencies": {
@@ -10,6 +11,7 @@
     "@vercel/node": "^3.1.1",
     "concurrently": "^8.2.2",
     "hono": "^4.3.4",
+    "tsc-alias": "^1.8.9",
     "vercel": "^34.1.11"
   },
   "devDependencies": {
