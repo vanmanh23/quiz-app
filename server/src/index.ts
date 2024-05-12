@@ -17,6 +17,7 @@ app.use(
     credentials: true,
   }),
 );
+
 app.route("/categories", categories);
 app.get('/', (c) => {
   try{
