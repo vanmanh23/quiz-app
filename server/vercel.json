@@ -1,10 +1,16 @@
+
 {
-  "routes": [
+  "version": 2,
+  "builds": [
     {
-      "src": "/", 
-      "dest": "/server/api/index.ts", 
-      "methods": ["GET"]
+      "src": "package.json",
+      "use": "@vercel/node"
     }
   ],
-   "rewrites": [{ "source": "/", "destination": "./src/index.ts" }]
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "public/index.js"
+    }
+  ]
 }
