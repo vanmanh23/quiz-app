@@ -19,17 +19,12 @@ app.use(
 );
 
 app.route("/categories", categories);
-app.get('/', (c) => {
-  try{
-    return c.text('Hello Hono!')
-  }catch(err){
-    console.log(err);
-  } 
-  return c.text('Hello Hono2!')
-})
-
-// const port = 3000
-// console.log(`Server is running on port ${port}`)
+app.notFound((c) => {
+  return c.json({
+      message: "Not found",
+      statusCode: 404,
+  }, 404);
+});
 
 serve(app, () => {
   console.log('Server is running on http://localhost:3000');
