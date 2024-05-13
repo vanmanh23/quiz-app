@@ -16,7 +16,6 @@
     "hono": "^4.3.4"
   },
   "devDependencies": {
-    "@types/node": "^20.12.11",
     "prisma": "^5.13.0",
     "tsc-alias": "^1.8.9",
     "tsx": "^4.9.4",
