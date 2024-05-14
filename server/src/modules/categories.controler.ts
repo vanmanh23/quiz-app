@@ -17,8 +17,8 @@ router
 .post("/", async (c) => {
     const data = await c.req.json();
     console.log(data);
-    const createFlagTest = await CategoriesService.create(data);
-    return c.json({message: "Create new category", data: createFlagTest});
+    await CategoriesService.create(data);
+    return c.json({message: "Create new category successfully"});
 })
 .delete("/:id", async (c) => {
     const id = c.req.param("id") ;
