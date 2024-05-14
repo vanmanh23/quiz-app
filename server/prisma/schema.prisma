@@ -19,7 +19,7 @@ model Image {
   uri       String
   alt       String
   flagTest  FlagTest?  @relation(fields: [flagTestId], references: [id])
-  flagTestId Int?      @unique
+  flagTestId String?      @unique
 }
 model FlagTest {
   // id Int @unique @id @default(autoincrement())
@@ -28,7 +28,7 @@ model FlagTest {
   // testName String
   // numOfQuestions Int
   // duration Int
-  id              Int       @id @default(autoincrement())
+  id              String       @id 
   title           String
   testName        String
   numOfQuestions  Int

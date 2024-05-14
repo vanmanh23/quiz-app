@@ -11,7 +11,7 @@ router
 })
 .get("/:id", async (c) => {
     const id = c.req.param("id") ;
-    const category = await CategoriesService.getById(Number(id));
+    const category = await CategoriesService.getById(id);
     return c.json({message: "Get category by id", data: category});
 })
 .post("/", async (c) => {
@@ -22,6 +22,6 @@ router
 })
 .delete("/:id", async (c) => {
     const id = c.req.param("id") ;
-    await CategoriesService.deleteById(Number(id));
+    await CategoriesService.deleteById(id);
     return c.json({message: "Delete category by id"});
 })

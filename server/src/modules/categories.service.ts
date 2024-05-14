@@ -6,7 +6,7 @@ export class CategoriesService {
     const data = await db.flagTest.findMany({});
     return data;
   }
-  static async getById(id: number) {
+  static async getById(id: string) {
     const data = await db.flagTest.findUnique({ where: { id }, include: {image: {
       select: {
         uri: true,
@@ -25,7 +25,7 @@ export class CategoriesService {
       throw err;
     }
   }
-  static async deleteById(id: number) {
+  static async deleteById(id: string) {
     try{
       const result = await db.flagTest.delete({ where: { id }, include: {image: {
         select: {
