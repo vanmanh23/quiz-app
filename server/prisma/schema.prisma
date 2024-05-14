@@ -10,24 +10,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 model Image {
-  // id Int @id @default(autoincrement())
-  // uri String?
-  // alt String
-  // flagtest FlagTest @relation(fields: [flagtestid], references: [id])
-  // flagtestid Int  @unique
-  id        Int      @id @default(autoincrement())
+  id        String      @id 
   uri       String
   alt       String
   flagTest  FlagTest?  @relation(fields: [flagTestId], references: [id])
   flagTestId String?      @unique
 }
 model FlagTest {
-  // id Int @unique @id @default(autoincrement())
-  // title String
-  // image Image?
-  // testName String
-  // numOfQuestions Int
-  // duration Int
   id              String       @id 
   title           String
   testName        String
