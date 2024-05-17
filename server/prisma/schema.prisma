@@ -9,18 +9,66 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+// model Image {
+//   id         String    @id @default(cuid())
+//   uri        String
+//   alt        String
+//   flagTest   FlagTest? @relation(fields: [flagTestId], references: [id])
+//   flagTestId String?   @unique
+//   question   Question  @relation(fields: [questionId], references: [id])
+//   questionId String
+// }
 model Image {
-  id        String      @id 
-  uri       String
-  alt       String
-  flagTest  FlagTest?  @relation(fields: [flagTestId], references: [id])
-  flagTestId String?      @unique
+  id        String @id @default(cuid())
+  uri        String
+  alt        String
+  testname    TestName? @relation(fields: [testnameId], references: [id])
+  testnameId String? @unique
+  question  Question? @relation(fields: [questionId], references: [id])
+  questionId String? @unique
 }
-model FlagTest {
-  id              String       @id 
-  title           String
-  testName        String
-  numOfQuestions  Int
-  duration        Int
-  image           Image?    
+
+model TestName {
+  id             String @id @default(cuid())
+  title          String
+  testName       String   @unique
+  numOfQuestions Int
+  duration       Int
+  image          Image?
+}
+
+model Option {
+  id         String   @id @default(cuid())
+  text       String
+  isCorrect  Boolean
+  question   Question @relation(fields: [questionId], references: [id])
+  questionId String
+}
+
+// model Question {
+//   id                String    @id @default(cuid())
+//   question          String
+//   image             Image[]
+//   hint              String
+//   options           Option[]
+//   answerDescription String
+//   testQuestion      Questions @relation(fields: [testQuestionId], references: [id])
+//   testQuestionId    String
+// }
+model Question {
+  id                String    @id @default(cuid())
+  question          String
+  image             Image?
+  hint              String
+  options           Option[]
+  answerDescription String
+  testQuestion      Questions @relation(fields: [testQuestionId], references: [id])
+  testQuestionId    String
+}
+
+model Questions {
+  id       String     @id @default(cuid())
+  testName String
+  question Question[]
 }

@@ -20,6 +20,11 @@ router
     await CategoriesService.create(data);
     return c.json({message: "Create new category successfully"});
 })
+.post("/image", async (c) => {
+    const data = await c.req.json();
+    await CategoriesService.imagecreate(data);
+    return c.json({message: "Create new image successfully"});
+})
 .delete("/:id", async (c) => {
     const id = c.req.param("id") ;
     await CategoriesService.deleteById(id);
