@@ -30,3 +30,8 @@ router
     await CategoriesService.deleteById(id);
     return c.json({message: "Delete category by id"});
 })
+.get("/:testName", async (c) => {
+    const testName = c.req.param("testName") ;
+    const categories = await CategoriesService.getByTestName(testName);
+    return c.json({message: "Get categories by test name", data: categories});
+})
