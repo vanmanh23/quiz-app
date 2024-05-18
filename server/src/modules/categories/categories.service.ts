@@ -30,6 +30,15 @@ export class CategoriesService {
       throw err;
     }
   }
+  static async getByTestName(testName: string) {
+    const data = await db.testName.findFirst({where: {testName: testName}, include: {image: {
+      select: {
+        uri: true,
+        alt: true
+      }
+    }}})
+    return data;
+  }
   static async deleteById(id: string) {
     try{
       const result = await db.testName.delete({ where: { id }, include: {image: {
