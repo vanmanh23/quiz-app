@@ -12,7 +12,7 @@ app.use(
   "*",
   cors({
     origin: [
-      "http://localhost:3000",
+      "http://localhost:5173",
       "https://quiz-app-api-one.vercel.app"
     ],
     credentials: true,
@@ -32,4 +32,4 @@ serve(app, () => {
   console.log('Server is running on http://localhost:3000');
 });
 
-export default handle(app)
+// export default handle(app)
