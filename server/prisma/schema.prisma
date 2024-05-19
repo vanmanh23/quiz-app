@@ -36,6 +36,7 @@ model TestName {
   numOfQuestions Int
   duration       Int
   image          Image?
+  question        Question[]
 }
 
 model Option {
@@ -63,12 +64,12 @@ model Question {
   hint              String
   options           Option[]
   answerDescription String
-  testQuestion      Questions @relation(fields: [testQuestionId], references: [id])
-  testQuestionId    String
+  testName      TestName @relation(fields: [testNameId], references: [testName])
+  testNameId    String
 }
 
-model Questions {
-  id       String     @id @default(cuid())
-  testName String
-  question Question[]
-}
+// model Questions {
+//   id       String     @id @default(cuid())
+//   testName String
+//   question Question[]
+// }

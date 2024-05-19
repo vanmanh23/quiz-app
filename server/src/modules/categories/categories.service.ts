@@ -31,12 +31,23 @@ export class CategoriesService {
     }
   }
   static async getByTestName(testName: string) {
-    const data = await db.testName.findFirst({where: {testName: testName}, include: {image: {
-      select: {
-        uri: true,
-        alt: true
+    const data = await db.testName.findFirst({where: {testName: testName}, include: {
+      image: {
+        select: {
+          uri: true,
+          alt: true
+        }
+      },
+      question: {
+        select: {
+          question: true,
+          answerDescription: true,
+          hint: true,
+          options: true,
+          image: true
+        }
       }
-    }}})
+    } })
     return data;
   }
   static async deleteById(id: string) {
