@@ -40,6 +40,7 @@ export class CategoriesService {
       },
       question: {
         select: {
+          id: true,
           question: true,
           answerDescription: true,
           hint: true,
