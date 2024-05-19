@@ -1,10 +1,9 @@
 {
     "functions": {
-      "api/index.js": {
-        "runtime": "@vercel/node@3.1.1",
+      "/server/src/index.ts": {
+
         "memory": 3009,
-        "maxDuration": 600
+        "maxDuration": 300
       }
-    },
-    "rewrites": [{ "source": "/api/(.*)", "destination": "../server/src" }]
+    }
   }
