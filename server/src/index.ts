@@ -16,6 +16,7 @@ app.use(
       "https://quiz-app-api-one.vercel.app"
     ],
     credentials: true,
+    allowMethods: ["POST", "GET", "PUT", "DELETE","OPTIONS"],
   }),
 );
 

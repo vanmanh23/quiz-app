@@ -13,13 +13,14 @@
     "@prisma/client": "5.13.0",
     "@vercel/node": "^3.1.1",
     "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
     "hono": "^4.3.4"
   },
   "devDependencies": {
     "prisma": "^5.13.0",
     "tsc-alias": "^1.8.9",
     "tsx": "^4.9.4",
-    "vercel": "^34.1.11",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "vercel": "^34.1.11"
   }
 }
