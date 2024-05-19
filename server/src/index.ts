@@ -5,6 +5,7 @@ import { logger } from "hono/logger";
 import { router as categories } from './modules/categories/categories.controler';
 import { router as questions } from './modules/question/questions.controler';
 import { handle } from '@hono/node-server/vercel'
+
 const app = new Hono().basePath('/api');
 
 app.use("*", logger());
