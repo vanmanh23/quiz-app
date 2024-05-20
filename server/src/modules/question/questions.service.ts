@@ -7,12 +7,12 @@ static async getAll() {
     return data;
 }
 static async createQuestion(data: Question) {
-    try {
-        await db.question.create({data});
-        return data;
-    }catch(error) {
-        throw error;
-    }
+    // try {
+        const dd = await db.question.create({data});
+        return dd;
+    // }catch(error) {
+    //     throw error;
+    // }
 }
 static async createOptions(data: Option) {
     try{
