@@ -6,9 +6,10 @@ static async getAll() {
     const data = await db.question.findMany();
     return data;
 }
-static async create(data: Question) {
+static async createQuestion(data: Question) {
     try {
         await db.question.create({data});
+        return data;
     }catch(error) {
         throw error;
     }

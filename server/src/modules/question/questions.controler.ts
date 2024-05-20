@@ -8,10 +8,10 @@ router
     const questions = await QuestionsService.getAll();
     return c.json({message: "Get all questions", data: questions});
 })
-.post("/", async (c) => {
+.post("/question", async (c) => {
     const data = await c.req.json();
-    await QuestionsService.create(data);
-    return c.json({message: "Create new question successfully"}, 200);
+    await QuestionsService.createQuestion(data);
+    return c.json({message: "Create new question successfully", data: data});
 })
 .post("/options", async (c) => {
     const data = await c.req.json();
