@@ -12,7 +12,7 @@ app.use("*", logger());
 app.use(
     "*",
     cors({
-        origin: ["http://localhost:5173", "https://airbnbapp-web.vercel.app"],
+        origin: ["http://localhost:5173", "https://airbnbapp-web.vercel.app","http://localhost:8081"],
         credentials: true,
     })
 );
