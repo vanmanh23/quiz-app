@@ -6,21 +6,6 @@ static async getAll() {
     const data = await db.question.findMany();
     return data;
 }
-// static async getByTestName(testName : string) {
-//     const data = await db.question.findFirst({where : {}, 
-//         include: {question: {
-//             select: {
-//                 image: true,
-//                 answerDescription: true,
-//                 options: true,
-//                 question: true,
-//                 hint: true
-                
-//             }
-//         } }});
-//     return data;
-// }
-
 static async create(data: Question) {
     try {
         await db.question.create({data});
@@ -42,13 +27,5 @@ static async createImage(data: Image) {
         throw error;
     }
 }
-// static async create(data : Questions) {
-//     try {
-//         await db.questions.create({data});
-//     } catch (error) {
-//         console.log("error when create data: ",error);
-//         throw error;
-//     }
-// }
 }
 

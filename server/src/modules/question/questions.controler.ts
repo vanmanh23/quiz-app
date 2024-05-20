@@ -8,16 +8,10 @@ router
     const questions = await QuestionsService.getAll();
     return c.json({message: "Get all questions", data: questions});
 })
-// .get("/:testName",async (c) => {
-//     const testName = c.req.param("testName") ;
-//     const questions = await QuestionsService.getByTestName(testName);
-//     return c.json({message: "Get questions by test name", data: questions});
-// })
 .post("/", async (c) => {
-    const data = await c.req.json();
-    console.log(data);
-    await QuestionsService.create(data);
-    return c.json({message: "Create new question successfully"});
+    // const data = await c.req.json();
+    // await QuestionsService.create(data);
+    return c.json({message: "Create new question successfully"}, 200);
 })
 .post("/options", async (c) => {
     const data = await c.req.json();
