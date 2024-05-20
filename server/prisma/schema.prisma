@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -8,17 +5,9 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
-// model Image {
-//   id         String    @id @default(cuid())
-//   uri        String
-//   alt        String
-//   flagTest   FlagTest? @relation(fields: [flagTestId], references: [id])
-//   flagTestId String?   @unique
-//   question   Question  @relation(fields: [questionId], references: [id])
-//   questionId String
-// }
 model Image {
   id        String @id @default(cuid())
   uri        String
@@ -46,17 +35,6 @@ model Option {
   question   Question @relation(fields: [questionId], references: [id])
   questionId String
 }
-
-// model Question {
-//   id                String    @id @default(cuid())
-//   question          String
-//   image             Image[]
-//   hint              String
-//   options           Option[]
-//   answerDescription String
-//   testQuestion      Questions @relation(fields: [testQuestionId], references: [id])
-//   testQuestionId    String
-// }
 model Question {
   id                String    @id @default(cuid())
   question          String
@@ -67,9 +45,3 @@ model Question {
   testName      TestName @relation(fields: [testNameId], references: [testName])
   testNameId    String
 }
-
-// model Questions {
-//   id       String     @id @default(cuid())
-//   testName String
-//   question Question[]
-// }
