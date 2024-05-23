@@ -13,10 +13,10 @@ app.use(
     "*",
     cors({
         origin: ["http://localhost:5173", "https://quiz-app-server-omega.vercel.app"],
-        allowHeaders: ['X-Custom-Header', 'Upgrade-Insecure-Requests'],
-        allowMethods: ['POST', 'GET', 'OPTIONS'],
-        exposeHeaders: ['Content-Length', 'X-Kuma-Revision'],
-        maxAge: 600,
+        // allowHeaders: ['X-Custom-Header', 'Upgrade-Insecure-Requests'],
+        // allowMethods: ['POST', 'GET', 'OPTIONS'],
+        // exposeHeaders: ['Content-Length', 'X-Kuma-Revision'],
+        // maxAge: 600,
         credentials: true,
     })
 );
