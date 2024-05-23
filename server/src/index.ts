@@ -44,17 +44,17 @@ import { serve } from "@hono/node-server";
 import { cors } from 'hono/cors';
 import { router as categories } from './modules/categories/categories.controler';
 import { router as questions } from './modules/question/questions.controler';
-const app = new Hono().basePath("/api");
+const app = new Hono();
 
 const corsOptions = {
   origin: 'http://localhost:5173',
   allowHeaders: ['Content-Type'],
 };
 
-app.use('*', cors(corsOptions));
+app.use('/api/*', cors(corsOptions));
 
-app.route("/categories", categories);
-app.route("/questions", questions);
+app.route("/api/categories", categories);
+app.route("/api/questions", questions);
 
 app.notFound((c) => {
   return c.json(
