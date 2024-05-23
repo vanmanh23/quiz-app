@@ -44,6 +44,7 @@ import { serve } from "@hono/node-server";
 import { cors } from 'hono/cors';
 import { router as categories } from './modules/categories/categories.controler';
 import { router as questions } from './modules/question/questions.controler';
+import { handle } from "@hono/node-server/vercel";
 const app = new Hono();
 
 const corsOptions = {
@@ -71,4 +72,4 @@ serve(app, () => {
   console.log("Server is running on http://localhost:3000");
 });
 
-// export default app;
+export default handle(app)
