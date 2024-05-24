@@ -42,17 +42,18 @@
 import { Hono } from 'hono';
 import { serve } from "@hono/node-server";
 import { cors } from 'hono/cors';
+import { logger } from "hono/logger";
 import { router as categories } from './modules/categories/categories.controler';
 import { router as questions } from './modules/question/questions.controler';
 import { handle } from "@hono/node-server/vercel";
 const app = new Hono();
 
 const corsOptions = {
-  origin: 'http://localhost:5173',
+  origin: ['http://localhost:5173'],
   allowHeaders: ['Content-Type', 'Authorization'], // Add other headers if needed
   allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
 };
-
+app.use("/api/*", logger());
 app.use('/api/*', cors(corsOptions));
 
 app.route("/api/categories", categories);
