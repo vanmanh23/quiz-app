@@ -1,0 +1,30 @@
+{
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc && tsc-alias",
+    "deploy": "vercel",
+    "postinstall": "prisma generate"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.11.1",
+    "@prisma/extension-pulse": "^1.0.2",
+    "hono": "^4.3.10",
+
+    "@hono/zod-validator": "^0.1.11",
+    "@prisma/client": "^5.14.0",
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "jsonwebtoken": "^9.0.2",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "prisma": "^5.14.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.5",
+    "@types/bcrypt": "^5.0.2",
+    "tsc-alias": "^1.8.10",
+    "vercel": "^33.7.1"
+  }
+}
