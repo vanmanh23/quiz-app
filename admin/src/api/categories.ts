@@ -9,6 +9,10 @@ interface test{
 }
 
 export const createtest = async (data: test) => {
-    const req = await axios.post('https://quiz-my-server.vercel.app/api/categories', data)
-    return req.data;
+     
+     try {
+        await axios.post('http://localhost:3000/api/categories', data)
+     } catch (error) {
+        console.log(error)
+     }
 }
