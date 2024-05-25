@@ -9,6 +9,6 @@ interface test{
 }
 
 export const createtest = async (data: test) => {
-    const req = await axios.post('https://quiz-app-server-omega.vercel.app/api/categories', data)
+    const req = await axios.post('https://quiz-my-server.vercel.app/api/categories', data)
     return req.data;
 }
