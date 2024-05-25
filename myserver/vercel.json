@@ -1,23 +1,10 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "src/index.ts",
-      "use": "@vercel/node"
-    }
-  ],
+
   "functions": {
     "api/index.js": {
       "runtime": "@vercel/node@3.0.11"
     }
   },
-  "rewrites": [{ "source": "/api/(.*)", "destination": "/api" }],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "src/index.ts",
-      "headers": { "Access-Control-Allow-Origin": "*" },
-      "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
-    }
-  ]
+  "rewrites": [{ "source": "/api/(.*)", "destination": "/api" }]
+
 }
