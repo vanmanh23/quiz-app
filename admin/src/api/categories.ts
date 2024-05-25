@@ -11,7 +11,7 @@ interface test{
 export const createtest = async (data: test) => {
      
      try {
-        await axios.post('http://localhost:3000/api/categories', data)
+        await axios.post('https://quiz-my-server.vercel.app/api/categories', data)
      } catch (error) {
         console.log(error)
      }
