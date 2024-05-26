@@ -5,6 +5,11 @@ import { serve } from "@hono/node-server";
 import { router as categories }from "./modules/categories/categories.controler";
 import { handle } from "@hono/node-server/vercel";
 
+import type { PageConfig } from 'next'
+
+export const config: PageConfig = {
+  runtime: "edge",
+}
 const app = new Hono().basePath("/api");
 
 app.use("*", logger());
@@ -31,6 +36,4 @@ serve(app, () => {
     console.log("Server is running on http://localhost:3000");
   });
 
-  export const GET = handle(app)
-  export const POST = handle(app)
   export default handle(app)
