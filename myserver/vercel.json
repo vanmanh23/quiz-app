@@ -14,6 +14,6 @@
     }
   ],
   "redirects": [
-    {"src": "/api/(.*)", "dest": "./src/index.ts", "status": 302}
+    {"src": "/api/(.*)", "dest": "/", "status": 200}
   ]
 }
