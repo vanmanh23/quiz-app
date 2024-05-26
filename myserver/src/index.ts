@@ -50,12 +50,16 @@ app.notFound((c) => {
     });
   })
   app.post("/test2", async (c) => {
-    const data = await c.req.json();
-    return c.json({
-      message: "create category successfully",
-      data: data,
-      status: 200,
-    });
+    try {
+      const data = await c.req.json(); // Make the json() call asynchronous
+      return c.json({
+        message: 'create category successfully',
+        data: data,
+        status: 200,
+      });
+    } catch (error) {
+      return c.json({ error: 'Invalid JSON' }, 400);
+    }
   })
 serve(app, () => {
     console.log("Server is running on http://localhost:3000");
