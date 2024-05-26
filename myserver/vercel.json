@@ -10,16 +10,12 @@
       }
     }
   ],
-  "fuctions": {
-    "api/*": {
-      "maxDuration": 15
-    }
-  },
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "src/index.ts"
-
+      "dest": "src/index.ts",
+      "methods": ["POST", "GET", "PUT", "DELETE", "OPTIONS", "HEAD"],
+      "maxDuration": 15
     }
   ]
 }
