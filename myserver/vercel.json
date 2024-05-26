@@ -1,21 +1,19 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "src/index.ts",
-      "use": "@vercel/node",
-      "config": {
-        "memory": 1024,
-        "maxDuration": 30
-      }
+  "functions":{
+    "src/index.ts": {
+      "memory": 3009,
+      "maxDuration": 30
     }
-  ],
+  },
   "routes": [
     {
       "src": "/api/(.*)",
       "dest": "src/index.ts",
-      "methods": ["POST", "GET", "PUT", "DELETE", "OPTIONS", "HEAD"],
-      "maxDuration": 15
+      "methods": ["POST", "GET", "PUT", "DELETE", "OPTIONS", "HEAD"]
     }
+  ],
+  "redirects": [
+    {"src": "/api/(.*)", "dest": "./src/index.ts", "status": 302}
   ]
 }
