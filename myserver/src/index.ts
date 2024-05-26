@@ -31,9 +31,11 @@ app.notFound((c) => {
       404,
     );
   });
-
+  app.get('/test', (c) => c.json({message: "hello world", statusCode: 200}))
+  app.post('/test', (c) => c.text('POST /'))
 serve(app, () => {
     console.log("Server is running on http://localhost:3000");
   });
 
-  export default handle(app)
+  // export default handle(app)
+  export default app
