@@ -33,6 +33,7 @@ app.notFound((c) => {
     );
   });
   app.get('/test', (c) => c.json({message: "hello world", statusCode: 200}))
+  app.get('/test2', (c) => c.json({message: "hello world", statusCode: 200}))
   app.post('/test', (c) => c.text('POST /'))
   app.post("/createcate", async (c) => {
     const data = {
