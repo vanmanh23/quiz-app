@@ -1,16 +1,14 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const hono_1 = require("hono");
-const cors_1 = require("hono/cors");
-const logger_1 = require("hono/logger");
-const node_server_1 = require("@hono/node-server");
-const categories_controler_1 = require("./modules/categories/categories.controler");
-const questions_controler_1 = require("./modules/question/questions.controler");
-const vercel_1 = require("@hono/node-server/vercel");
-const categories_service_1 = require("./modules/categories/categories.service");
-const app = new hono_1.Hono().basePath("/api");
-app.use("*", (0, logger_1.logger)());
-app.use("*", (0, cors_1.cors)({
+import { Hono } from "hono";
+import { cors } from "hono/cors";
+import { logger } from "hono/logger";
+import { serve } from "@hono/node-server";
+import { router as categories } from './modules/categories/categories.controler';
+import { router as questions } from './modules/question/questions.controler';
+import { handle } from "@hono/node-server/vercel";
+import { CategoriesService } from "./modules/categories/categories.service";
+const app = new Hono().basePath("/api");
+app.use("*", logger());
+app.use("*", cors({
     origin: "*",
     credentials: true,
     allowHeaders: ["Content-Type", "Authorization"],
@@ -18,8 +16,8 @@ app.use("*", (0, cors_1.cors)({
     maxAge: 600,
     allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 }));
-app.route("/categories", categories_controler_1.router);
-app.route("/questions", questions_controler_1.router);
+app.route("/categories", categories);
+app.route("/questions", questions);
 app.notFound((c) => {
     return c.json({
         message: "Not found",
@@ -37,7 +35,7 @@ app.post("/createcate", async (c) => {
         numOfQuestions: 10,
         duration: 60,
     };
-    await categories_service_1.CategoriesService.create(data);
+    await CategoriesService.create(data);
     return c.json({
         message: "create category successfully",
         status: 200,
@@ -45,7 +43,7 @@ app.post("/createcate", async (c) => {
 });
 app.post("/test3", async (c) => {
     try {
-        const rawBody = await c.req.json();
+        const rawBody = await c.req.json(); // Manually parse the raw body text
         return c.json({
             message: 'create category successfully',
             data: rawBody,
@@ -75,8 +73,7 @@ app.post("/test2", async (c) => {
         return c.json({ error: 'Invalid JSON' }, 400);
     }
 });
-(0, node_server_1.serve)(app, () => {
+serve(app, () => {
     console.log("Server is running on http://localhost:3000");
 });
-exports.default = (0, vercel_1.handle)(app);
-//# sourceMappingURL=index.js.map
+export default handle(app);

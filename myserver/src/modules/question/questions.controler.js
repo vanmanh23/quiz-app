@@ -1,13 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.router = void 0;
-const hono_1 = require("hono");
-const questions_service_1 = require("./questions.service");
-exports.router = new hono_1.Hono();
-exports.router
+import { Hono } from "hono";
+import { QuestionsService } from "./questions.service";
+export const router = new Hono();
+router
     .get("/", async (c) => {
     try {
-        const questions = await questions_service_1.QuestionsService.getAll();
+        const questions = await QuestionsService.getAll();
         return c.json({ message: "Get all questions", data: questions });
     }
     catch (error) {
@@ -18,7 +15,7 @@ exports.router
     .post("/question", async (c) => {
     try {
         const data = await c.req.json();
-        await questions_service_1.QuestionsService.createQuestion(data);
+        await QuestionsService.createQuestion(data);
         return c.json({ message: "Create new question successfully", data: data });
     }
     catch (error) {
@@ -29,7 +26,7 @@ exports.router
     .post("/options", async (c) => {
     try {
         const data = await c.req.json();
-        await questions_service_1.QuestionsService.createOptions(data);
+        await QuestionsService.createOptions(data);
         return c.json({ message: "Create new option successfully" });
     }
     catch (error) {
@@ -40,7 +37,7 @@ exports.router
     .post("/image", async (c) => {
     try {
         const data = await c.req.json();
-        await questions_service_1.QuestionsService.createImage(data);
+        await QuestionsService.createImage(data);
         return c.json({ message: "Create new image successfully" });
     }
     catch (error) {
@@ -48,4 +45,3 @@ exports.router
         return c.json({ message: "Error creating image", error: error }, 500);
     }
 });
-//# sourceMappingURL=questions.controler.js.map
