@@ -31,4 +31,5 @@ serve(app, () => {
     console.log("Server is running on http://localhost:3000");
   });
 
-  export default handle(app)
+  export const GET = handle(app)
+  export const POST = handle(app)
