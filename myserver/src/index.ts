@@ -35,7 +35,13 @@ app.notFound((c) => {
   app.get('/test', (c) => c.json({message: "hello world", statusCode: 200}))
   app.post('/test', (c) => c.text('POST /'))
   app.post("/createcate", async (c) => {
-    const data = await c.req.json();
+    const data = {
+      id: "some-id",
+      title: "some-title",
+      testName: "some-test-name",
+      numOfQuestions: 10,
+      duration: 60,
+    };
     await CategoriesService.create(data);
     return c.json({
       message: "create category successfully",
