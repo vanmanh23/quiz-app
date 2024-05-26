@@ -51,7 +51,13 @@ app.notFound((c) => {
   })
   app.post("/test2", async (c) => {
     try {
-      const data = await c.req.json(); // Make the json() call asynchronous
+      const data = {
+        id: "some-id",
+        title: "some-title",
+        testName: "some-test-name",
+        numOfQuestions: 10,
+        duration: 60,
+      };
       return c.json({
         message: 'create category successfully',
         data: data,
