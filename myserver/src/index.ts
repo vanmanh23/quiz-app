@@ -5,6 +5,7 @@ import { serve } from "@hono/node-server";
 import { router as categories } from './modules/categories/categories.controler';
 import { router as questions } from './modules/question/questions.controler';
 import { handle } from "@hono/node-server/vercel";
+import { CategoriesService } from "./modules/categories/categories.service";
 const app = new Hono().basePath("/api");
 
 app.use("*", logger());
@@ -33,6 +34,14 @@ app.notFound((c) => {
   });
   app.get('/test', (c) => c.json({message: "hello world", statusCode: 200}))
   app.post('/test', (c) => c.text('POST /'))
+  app.post("/createcate", async (c) => {
+    const data = await c.req.json();
+    const category = await CategoriesService.create(data);
+    return c.json({
+      data: category,
+      status: 200,
+    });
+  })
 serve(app, () => {
     console.log("Server is running on http://localhost:3000");
   });
