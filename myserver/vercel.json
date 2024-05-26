@@ -10,6 +10,11 @@
       }
     }
   ],
+  "fuctions": {
+    "api/*": {
+      "maxDuration": 15
+    }
+  },
   "routes": [
     {
       "src": "/api/(.*)",
