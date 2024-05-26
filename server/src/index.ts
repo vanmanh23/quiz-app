@@ -3,6 +3,7 @@ import { cors } from "hono/cors";
 import { logger } from "hono/logger";
 import { serve } from "@hono/node-server";
 import { router as categories }from "./modules/categories/categories.controler";
+import { handle } from "@hono/node-server/vercel";
 
 const app = new Hono().basePath("/api");
 
@@ -29,3 +30,5 @@ app.notFound((c) => {
 serve(app, () => {
     console.log("Server is running on http://localhost:3000");
   });
+
+  export default handle(app)
