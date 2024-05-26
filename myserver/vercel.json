@@ -1,7 +1,7 @@
 {
   "version": 2,
   "functions":{
-    "src/index.ts": {
+    "index.ts": {
       "memory": 3009,
       "maxDuration": 30
     }
