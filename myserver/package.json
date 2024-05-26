@@ -1,11 +1,6 @@
 {
-  "name": "myserver",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "tsc && tsc-alias",
     "deploy": "vercel",
     "postinstall": "prisma generate"
   },
