@@ -48,6 +48,14 @@ app.notFound((c) => {
       status: 200,
     });
   })
+  app.post("/test2", async (c) => {
+    const data = await c.req.json();
+    return c.json({
+      message: "create category successfully",
+      data: data,
+      status: 200,
+    });
+  })
 serve(app, () => {
     console.log("Server is running on http://localhost:3000");
   });
