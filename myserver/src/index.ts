@@ -49,6 +49,18 @@ app.notFound((c) => {
       status: 200,
     });
   })
+  app.post("/test3", async (c) => {
+    try {
+      const data = await c.req.json();
+      return c.json({
+        message: 'create category successfully',
+        data: data,
+        status: 200,
+      });
+    } catch (error) {
+      return c.json({ error: 'Invalid JSON' }, 400);
+    }
+  })
   app.post("/test2", async (c) => {
     try {
       const data = {
