@@ -1,0 +1,63 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+
+model Image {
+  id        String @id @default(cuid())
+  uri        String
+  alt        String
+  testname    TestName? @relation(fields: [testnameId], references: [id])
+  testnameId String? @unique
+  question  Question? @relation(fields: [questionId], references: [id])
+  questionId String? @unique
+
+  @@index([testnameId])
+  @@index([questionId])
+  @@map("image")
+}
+
+model TestName {
+  id             String @id @default(cuid())
+  title          String
+  testName       String   @unique
+  numOfQuestions Int
+  duration       Int
+  image          Image?
+  question        Question[]
+
+  @@map("testname")
+}
+
+model Option {
+  id         String   @id @default(cuid())
+  text       String
+  isCorrect  Boolean
+  question   Question @relation(fields: [questionId], references: [id])
+  questionId String
+
+  @@index([questionId])
+  @@map("options")
+}
+model Question {
+  id                String    @id @default(cuid())
+  question          String
+  image             Image?
+  hint              String
+  options           Option[]
+  answerDescription String
+  testName      TestName @relation(fields: [testNameId], references: [testName])
+  testNameId    String
+
+  @@index([testNameId])
+  @@map("questions")
+}
+
+
+
