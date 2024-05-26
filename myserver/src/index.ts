@@ -51,7 +51,8 @@ app.notFound((c) => {
   })
   app.post("/test3", async (c) => {
     try {
-      const data = await c.req.json();
+      const rawBody = await c.req.text(); // Manually parse the raw body text
+    const data = JSON.parse(rawBody);
       return c.json({
         message: 'create category successfully',
         data: data,
