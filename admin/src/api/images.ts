@@ -1,12 +1,12 @@
 import axios from "axios"
 
-interface Image {
-    url: string
+interface Imagequestion {
+    uri: string
     alt: string
-    testid: string
+    questionId: string
 }
 
-export const createImage = async (data: Image) => {
-    const res = await axios.post('https://quiz-app-server-omega.vercel.app/api/questions/image', data)
+export const createImage = async (data: Imagequestion) => {
+    const res = await axios.post('https://nodejs-serverless-function-express-omega-sepia-99.vercel.app/api/questions/image', data)
     return res.data
 }

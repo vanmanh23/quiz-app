@@ -14,8 +14,8 @@ const SIDE_BAR = [
     icon: <Home />
   },
   {
-    title: 'Category',
-    path: '/categories',
+    title: 'Users',
+    path: '/users',
     icon: <Tag />
   }
 ]
@@ -29,7 +29,7 @@ export default function Sidebar({ isOpen }: Props) {
   console.log("currunpath",currentPath)
   return (
     <ul
-      className={clsx('md:relative absolute top-13 left-0 bg-[#fff] h-full  space-y-2 border-r p-4', {
+      className={clsx('md:relative absolute z-50 top-13 left-0 bg-[#fff] h-full  space-y-2 border-r p-4', {
         'md:w-64 w-96': isOpen,
         'md:w-28 md:block hidden': !isOpen
       })}
