@@ -6,4 +6,6 @@ The React Native Quiz App is a dynamic and interactive mobile application design
 ### Image of the application
 #### Client site
 
-https://github.com/vanmanh23/quiz-app/blob/main/pictures/history/images.jpg
+## Quiz App Screenshot
+
+![Quiz App](https://raw.githubusercontent.com/vanmanh23/quiz-app/main/pictures/history/images.jpg)
