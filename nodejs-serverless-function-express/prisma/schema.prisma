@@ -1,0 +1,92 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model Image {
+  id        String @id @default(cuid())
+  uri        String
+  alt        String
+  testname    TestName? @relation(fields: [testnameId], references: [id])
+  testnameId String? @unique
+  question  Question? @relation(fields: [questionId], references: [id])
+  questionId String? @unique
+
+  @@index([testnameId])
+  @@index([questionId])
+  @@map("image")
+}
+
+model TestName {
+  id             String @id @default(cuid())
+  title          String
+  testName       String   @unique
+  numOfQuestions Int
+  duration       Int
+  image          Image?
+  question        Question[]
+  tests          Test[]
+
+  @@map("testname")
+}
+
+model Option {
+  id         String   @id @default(cuid())
+  text       String
+  isCorrect  Boolean
+  question   Question? @relation(fields: [questionId], references: [id])
+  questionId String? 
+
+  @@index([questionId])
+  @@map("option")
+}
+model Question {
+  id                String    @id @default(cuid())
+  question          String
+  image             Image?
+  hint              String
+  options           Option[]
+  answerDescription String
+  testName      TestName @relation(fields: [testNameId], references: [testName])
+  testNameId    String
+
+  @@index([testNameId])
+  @@map("questions")
+}
+model User {
+  id String @id @default(cuid())
+  userName String
+  email String @unique
+  password String
+  tests Test[]
+
+  @@map("users")
+}
+model Test {
+  id String @id @default(cuid())
+  score Int
+  day DateTime  @default(now())
+  timeTaken String
+  correctAnswers Int
+  user User @relation(fields: [userId], references: [id])
+  userId String
+  testName TestName @relation(fields: [testNameId], references: [id])
+  testNameId  String
+
+  @@index([userId])
+  @@index([testNameId])
+  @@map("tests")
+}
+
+
